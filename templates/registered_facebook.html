@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Social Pipeline: Your Facebook Account has been registered{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <h1 class="text-center logo my-4">
+      <a href="{% url 'index' %}">Social Pipeline</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Success!</h3>
+			<p>Your Facebook account <strong>@{{ profile_name }}</strong> has been successfully registered with Social Pipeline.</p><br>
+			<center><a href="{% url 'dashboard' %}">Start scheduling {{ platform }} posts now!</a></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

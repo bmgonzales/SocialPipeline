@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title%}Social Pipeline: {{ user.username }} Profile{% endblock title %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+	<br><br>	
+	  <div class="row justify-content-center">
+      <div class="card">
+          <div class="card-body">
+            <div class="row">
+			<div class="col-md-9">
+			<h4>User Information</h4>
+			<ul style="list-style-type:none;">
+			<li><strong>Username:</strong> {{ user.username }}
+			<li><strong>Email:</strong> {{ user.email }}
+			<li><strong>Password:</strong> ********* <br>(<a href="{% url 'password_change' %}"><strong>Change password</strong></a>)
+			</ul>
+			</div>
+			<div class="col-md-3" id="usericon">
+			<i class="fas fa-user fa-5x"></i>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-md-12">
+			<h4>Authorized Accounts</h4>
+			<ul style="list-style-type:none;">
+			<li><strong>Twitter Profile:</strong> 
+			{% if t_name == "" %}
+			<strong><a href="{% url 'register' platform=t_platform %}"><strong>Add Twitter Account</a></strong></center>
+			{% else %}
+			@{{ t_name }}
+			<a href="{% url 'delete_acct' pk=t_id %}" title="Delete profile"><i class="far fa-trash-alt"></i></a>
+			{% endif %}
+			<li><strong>Facebook Profile:</strong> 
+			{% if f_name == "" %}
+			<strong><a href="{% url 'register' platform=f_platform %}"><strong>Add Facebook Account</a></strong></center>
+			{% else %}
+			@{{ f_name }} 
+			<a href="{% url 'delete_acct' pk=f_id %}" title="Delete profile"><i class="far fa-trash-alt"></i></a>
+			{% endif %}
+			</ul>
+			<hr>
+			<center><a href="{% url 'dashboard' %}" class="btn btn-outline-primary">Schedule More Posts</a><br><br>
+			<strong><a href="{% url 'delete_profile' username=user %}"><strong>Delete Your User Account</a></strong></center>
+			</div>
+			</div>
+          </div>
+        </div>
+    </div>
+	
+</div>
+<div class="col-md-3"></div>
+	</div>
+</div>	
+	
+	
+	
+{% endblock %}

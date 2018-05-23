@@ -1,0 +1,109 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: 'Roboto', Helvetica, Sans-serif;
+	font-size: 1.1em;
+}
+
+a, a:hover, a:active {
+	color: #2d5265;
+}
+
+.row {
+	margin: 0;
+}
+
+.container-fluid {
+	padding: 0;
+}
+
+.main-content {
+	margin: 20px 30px 20px 30px;
+}
+
+#wrapper {
+	height: 100%;
+	background-color: #fff;
+}
+
+#landing {
+	background-color: #3fb7ad;
+	min-height: 100%;
+}
+
+nav {
+	height: 110px;
+	background-color: #3fb7ad;
+	position: relative;
+	border-bottom: solid 5px #2d5265;
+}
+
+nav #header {
+	position: absolute;
+	bottom: 0px;
+	left: 145px;
+	color: #2d5265;
+	font-size: 2.5em;
+	font-family: 'Oswald', Helvetica, Sans-serif;
+}
+
+a#userMenu {
+	color: #2d5265;
+	font-weight: bold;
+}
+
+.btn-outline-primary  {
+	color: #2d5265;
+	background-color: transparent;
+	background-image: none;
+	border-color: #2d5265;
+}
+
+.btn-outline-primary:hover {
+	color: #fff;
+	background-color: #2d5265;
+	border-color: #2d5265;
+	background-image: none;
+}
+
+#logo_sm {
+	float: left;
+}
+
+#logo_lg {
+	width: 450px;
+}
+
+#main_logo, #entry {
+	text-align: center;
+	padding-top: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #2d5265;
+	font-weight: bold;
+	font-family: 'Roboto', Helvetica, Sans-serif;
+}
+
+#usericon {
+	text-align: right;
+}
+
+.dashboard {
+	padding: 20px 25px 50px 25px;
+}
+
+.table th {
+	text-align: center;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	border: 1px solid #c5c5c5;
+	background: #ffffff;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: 1px solid #c5c5c5;
+	background: #f6f6f6;
+}

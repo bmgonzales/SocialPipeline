@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+	<div class="container-fluid row" id="landing">
+		<div class="col-md-12" id="main_logo">
+			<img src="{% static 'img/sp_logo_lg.jpg' %}" id="logo_lg" />
+			<h2>A Social Media Scheduling App</h2>
+			{% if user.is_authenticated %}
+				<div></div>
+			{% else %}
+				<div class="btn-group" id="entry">
+					<a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+					<a href="{% url 'signup' %}" class="btn btn-outline-primary">Sign up</a>
+				</div>
+            {% endif %}
+		</div>
+	</div>
+
+{% endblock %}

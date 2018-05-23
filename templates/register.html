@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Social Pipeline: Register a social media account{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <h1 class="text-center logo my-4">
+      <a href="{% url 'index' %}">Social Pipeline</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Register an Account</h3>
+			<br>
+				{% if platform == 'twitter' %}
+					
+				<div class="twitter box">
+				<br>
+				<p><a href="{{ twitter_url }}"><strong>Click to complete Twitter authorization</strong></a></p>
+				</div>
+					
+				{% elif platform == 'facebook' %}
+					
+				<div class="facebook box">
+				<br>
+				<p><a href="{{ facebook_url }}"><strong>Click to complete Facebook authorization</strong></a></p> 
+				</div>
+
+				{% endif %}
+			</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

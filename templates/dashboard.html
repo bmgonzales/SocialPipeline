@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title%}Social Pipeline: Dashboard{% endblock title %}
+
+{% block content %}
+<script>
+$(function() {
+    $( "#id_sched_date" ).datepicker({
+		dateFormat: "yy-mm-dd",
+		setDate: new Date(),
+		changeMonth: true,
+		changeYear: true,
+		minDate: 0,
+    });
+});
+</script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+<div class="container-fluid dashboard">
+<div class="row">
+
+	<div class="col-md-4">
+	<h3>Schedule A Post</h3>
+	<form method="post" novalidate enctype="multipart/form-data">
+	{% csrf_token %}
+	 {% include 'includes/form.html' %}
+  <button type="submit" class="btn btn-outline-info">Schedule Post</button>
+  {% if edit == "edit" %}
+  <button onclick="window.history.back();" class="btn btn-outline-info" type="button">Cancel</button>
+  {% endif %}
+</form>
+</div>
+
+	<div class="col-md-8" id="tabs">
+	<ul>
+	<li><a href="#tab1"><h4>Upcoming Posts</h4></a></li>
+	<li><a href="#tab2"><h4>Recent Posts</h4></a></li>
+	</ul>
+	<div id="tab1">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Status</th>
+          <th>Scheduled </th>
+          <th>Account</th>
+		  <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in upcoming %}
+		<tr>
+            <td width="50%">
+              {{ post.text }}
+			  {% if post.media %}
+			  <a href="http://bmgonzales.pythonanywhere.com/media/{{ post.media }}" onclick="window.open(this.href,'window','width=640,height=480,resizable,scrollbars'); return false;"><i class="far fa-file-image"></i></a>
+			  {% endif %}
+            </td>
+            <td width="20%" align="center">{{ post.sched_date }} <br>{{ post.sched_time }}</td>
+			<td width="20%" align="center">@{{ post.account }}</td>
+			<td width="10%" align="center">
+			<a href="{% url 'edit_post' pk=post.id %}" title="Edit this post"><i class="far fa-edit"></i></a>
+			<a href="{% url 'delete_post' pk=post.id %}" title="Delete this post"><i class="far fa-trash-alt"></i></a>
+			</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+	</div>
+	<div id="tab2">
+	    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Status</th>
+          <th>Posted </th>
+          <th>Account</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in recent %}
+		<tr>
+            <td width="60%">
+              {{ post.text }}
+			  {% if post.media %}
+			  <a href="http://bmgonzales.pythonanywhere.com/media/{{ post.media }}" onclick="window.open(this.href,'window','width=640,height=480,resizable,scrollbars'); return false;"><i class="far fa-file-image"></i></a>
+			  {% endif %}
+            </td>
+            <td width="20%" align="center">{{ post.sched_date }} <br>{{ post.sched_time }}</td>
+			<td width="20%" align="center">@{{ post.account }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+	</div>
+	</div>
+
+	</div>
+</div>
+
+{% endblock %}
